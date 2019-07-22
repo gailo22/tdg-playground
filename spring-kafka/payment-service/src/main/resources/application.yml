@@ -1,0 +1,16 @@
+server:
+  port: 8888
+  context-path: /payment-service/
+spring:
+  cloud:
+    stream:
+      bindings:
+        output:
+          contentType: application/json
+          destination: paymentTopic
+      kafka:
+        binder:
+          brokers: localhost
+          zkNodes: localhost
+#                   defaultZkPort: 2181
+#                   defaultBrokerPort: 9092

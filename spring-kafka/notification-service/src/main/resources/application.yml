@@ -1,0 +1,25 @@
+server:
+  port: 7777
+  context-path: /notofication-service/
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          contentType: application/json
+          destination: paymentTopic
+          group: paymentTopicGroup
+      kafka:
+        binder:
+          brokers: localhost
+          zkNodes: localhost
+##                  defaultZkPort: 2181
+##                  defaultBrokerPort: 9092
+#        consumer:
+#          auto-offset-reset: earliest
+#          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#
+#        producer:
+#          key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#          value-serializer: org.apache.kafka.common.serialization.StringSerializer
