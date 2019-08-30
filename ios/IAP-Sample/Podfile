@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'IAP-Sample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for IAP-Sample
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+
+  target 'IAP-SampleTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'IAP-SampleUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
