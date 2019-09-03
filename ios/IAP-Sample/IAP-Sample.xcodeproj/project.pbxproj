@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		018A9A29231905E300B1A108 /* IAP_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A9A28231905E300B1A108 /* IAP_SampleTests.swift */; };
 		018A9A34231905E400B1A108 /* IAP_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A9A33231905E400B1A108 /* IAP_SampleUITests.swift */; };
 		018A9A46231907B000B1A108 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 018A9A45231907B000B1A108 /* GoogleService-Info.plist */; };
+		018A9A48231D1B0E00B1A108 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A9A47231D1B0E00B1A108 /* IAPService.swift */; };
+		018A9A4A231D1EEB00B1A108 /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A9A49231D1EEB00B1A108 /* IAPProduct.swift */; };
 		0E7736E6F8124E96B6BA0A5C /* Pods_IAP_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9793638704D65E6C707BB0 /* Pods_IAP_SampleTests.framework */; };
 		92CB1EDD648B70982E7A6528 /* Pods_IAP_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF83C0D581661CBE7469F1C /* Pods_IAP_SampleUITests.framework */; };
 		BC3127AE15568B719138AA71 /* Pods_IAP_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C66394B207E953DB12EB1CC /* Pods_IAP_Sample.framework */; };
@@ -53,6 +55,8 @@
 		018A9A35231905E400B1A108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		018A9A432319075F00B1A108 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		018A9A45231907B000B1A108 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		018A9A47231D1B0E00B1A108 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		018A9A49231D1EEB00B1A108 /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 		0B9793638704D65E6C707BB0 /* Pods_IAP_SampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IAP_SampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C66394B207E953DB12EB1CC /* Pods_IAP_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IAP_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4D01DFA4FC774B33314B50 /* Pods-IAP-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAP-Sample.debug.xcconfig"; path = "Target Support Files/Pods-IAP-Sample/Pods-IAP-Sample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				018A9A1C231905E300B1A108 /* LaunchScreen.storyboard */,
 				018A9A1F231905E300B1A108 /* Info.plist */,
 				018A9A45231907B000B1A108 /* GoogleService-Info.plist */,
+				018A9A47231D1B0E00B1A108 /* IAPService.swift */,
+				018A9A49231D1EEB00B1A108 /* IAPProduct.swift */,
 			);
 			path = "IAP-Sample";
 			sourceTree = "<group>";
@@ -167,7 +173,6 @@
 				DDE39E1702FC5C9C04AB9483 /* Pods-IAP-SampleUITests.debug.xcconfig */,
 				4D551E180AE552766C697AD3 /* Pods-IAP-SampleUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -395,6 +400,8 @@
 			files = (
 				018A9A16231905E200B1A108 /* ViewController.swift in Sources */,
 				018A9A14231905E200B1A108 /* AppDelegate.swift in Sources */,
+				018A9A4A231D1EEB00B1A108 /* IAPProduct.swift in Sources */,
+				018A9A48231D1B0E00B1A108 /* IAPService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
