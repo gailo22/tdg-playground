@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">IAP-Application</string>
     <string name="add_firestore_doc">Add firestore doc</string>
+    <string name="add_firestore_doc2">Add firestore doc2</string>
 </resources>
