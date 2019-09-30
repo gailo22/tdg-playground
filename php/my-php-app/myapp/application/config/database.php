@@ -96,9 +96,11 @@ $query_builder = TRUE;
 // );
 
 $db['default']['hostname'] = 'mariadb';
-$db['default']['username'] = 'bn_app';
-$db['default']['password'] = 'Px1UL52NIH';
-$db['default']['database'] = 'bitnami_app';
+// $db['default']['username'] = 'bn_app';
+// $db['default']['password'] = 'Px1UL52NIH';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'my_app';
 
 $db['default']['dsn'] = '';
 $db['default']['dbdriver'] = 'mysqli';

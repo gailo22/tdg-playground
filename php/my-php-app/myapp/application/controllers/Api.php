@@ -16,14 +16,19 @@ class Api extends REST_Controller
        }   
 
        public function customers_get() {
-           $r = $this->CI->customer_model->get_all();
-           $this->response($r); 
+            $start = microtime(true);
+            $r = $this->CI->customer_model->get_all();
+            // sleep(10);
+            $this->response($r); 
+            $time_elapsed_secs = (microtime(true) - $start);
+
+            log_message('debug', 'Total execution time customers_get: '.$time_elapsed_secs.' secs');
        }
 
        public function customersrand_get() {
-        $r = $this->CI->customer_model->get_random();
-        $this->response($r); 
-    }
+            $r = $this->CI->customer_model->get_random();
+            $this->response($r); 
+        }
 
 
     //    public function user_put(){

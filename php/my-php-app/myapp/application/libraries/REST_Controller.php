@@ -628,6 +628,7 @@ abstract class REST_Controller extends \CI_Controller {
      */
     public function _remap($object_called, $arguments = [])
     {
+        $start = microtime(true);
         // Should we answer if not over SSL?
         if ($this->config->item('force_https') && $this->request->ssl === FALSE)
         {
@@ -751,6 +752,10 @@ abstract class REST_Controller extends \CI_Controller {
 	        $_error = &load_class('Exceptions', 'core');
 	        $_error->show_exception($ex);
         }
+
+        $time_elapsed_secs = (microtime(true) - $start);
+
+		log_message('debug', 'Total execution time _remap: '.$time_elapsed_secs.' secs');
     }
 
     /**

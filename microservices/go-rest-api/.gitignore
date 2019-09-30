@@ -60,3 +60,4 @@ go.sum
 coverage.xml
 
 go-rest-api
+.env
