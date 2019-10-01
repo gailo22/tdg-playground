@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: v1
+metadata:
+  name: {{ template "my-chart.fullname" . }}-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "my-chart.fullname" . }}-app
+  template:
+    metadata: 
+      labels:
+        app: {{ template "my-chart.fullname" . }}-app
+    spec:
+      containers:
+        - name: hello-app
+          image: gailo22/hello-app:1.0.0
+          env:
+            - name: MONGO_URL
+              value: mongodb://{{ template "mongodb.fullname" . }}.default.svc.cluster.local:27017/{{ .Values.DbName }}
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ template "my-chart.fullname" . }}-service
+spec:
+  type: NodePort
+  selector:
+    app: {{ template "my-chart.fullname" . }}-app
+  ports:
+    - port: 8080
+      targetPort: 3003
+
+
+
+
+
