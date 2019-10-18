@@ -1,4 +1,4 @@
-module go-practices/hello
+module go-practices/v1
 
 go 1.12
 
