@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: mongo
+  name: mongo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongo
+  template:
+    metadata:
+      labels:
+        name: mongo
+    spec:
+      containers:
+        - image: mongo
+          name: mongo
+          ports:
+            - name: mongo
+              containerPort: 27017
+              hostPort: 27017
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: mongo-pv-claim
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: MyApp
+  name: myapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: MyApp
+  template:
+    metadata:
+      labels:
+        app: MyApp
+    spec:
+      containers:
+        - image: spring-rx-mongo:latest
+          name: spring-rx-mongo
+          imagePullPolicy: Never
+          ports:
+            - name: spring-rx-mongo
+              containerPort: 8080
+              hostPort: 8080
+
+#---
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: nginx-deployment
+#  labels:
+#    app: nginx
+#spec:
+#  replicas: 3
+#  selector:
+#    matchLabels:
+#      app: nginx
+#  template:
+#    metadata:
+#      labels:
+#        app: nginx
+#    spec:
+#      containers:
+#        - name: nginx
+#          image: nginx:1.7.9
+#          ports:
+#            - containerPort: 80

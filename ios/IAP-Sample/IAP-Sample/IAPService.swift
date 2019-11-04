@@ -8,6 +8,8 @@
 
 import Foundation
 import StoreKit
+import Firebase
+import FirebaseFirestore
 
 class IAPService: NSObject {
     private override init() {}
@@ -61,5 +63,40 @@ extension SKPaymentTransactionState {
         case .failed: return "failed"
         default: return "default"
         }
+    }
+}
+
+
+func queryAuthenTokenFirebase(callback: @escaping () -> ()) {
+    let ref = FirebaseApp.realtimeDatabase.reference(withPath: "authen_token")
+    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        guard let value = snapshot.value as? [String: Any] else {
+            // Failed to cast
+            return
+        }
+        
+        NotificationCenter.default.post(name: .AuthenTokenFirebaseDataProxyInvalidated, object: nil)
+        callback()
+    }, withCancel: nil)
+}
+
+func queryAuthenTokenFirestore(callback: @escaping () -> ()) {
+    let ref = Firestore.firestore().collection("trueid-84d04").document("authen_token")
+    ref.addSnapshotListener { snapshot, error in
+        guard let document = snapshot else {
+            print("Error fetching document: \(error!)")
+            return
+        }
+        
+//        NotificationCenter.default.post(name: .AuthenTokenFirebaseDataProxyInvalidated, object: nil)
+        callback()
+    }
+}
+
+
+extension FirebaseApp {
+    static var realtimeDatabase: Database {
+        var endPoints = ""
+        return Database.database(url: endPoints)
     }
 }
