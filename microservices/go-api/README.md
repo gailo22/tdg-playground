@@ -21,3 +21,13 @@ $ docker image build -t go-api -f Dockerfile_dev .
 ```
 $ docker container run -it --rm go-api
 ```
+
+## build for production
+```
+$ docker image build -t go-api-prod .
+```
+
+## run production
+```
+$ docker container run -it -p 8080:8080 --rm go-api-prod
+```

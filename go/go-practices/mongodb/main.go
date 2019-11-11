@@ -9,6 +9,7 @@ import (
 	"github.com/avast/retry-go"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo/readconcern"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -35,7 +36,11 @@ func genRunningSequenceAndUpdate(db *mongo.Database, sequenceName string, purcha
 
 	// transaction
 	err := db.Client().UseSession(ctx, func(sessionContext mongo.SessionContext) error {
-		err := sessionContext.StartTransaction()
+		transactionOpts := options.TransactionOptions{
+			ReadConcern: readconcern.Majority(),
+			// WriteConcern: writeconcern.WMajority(),
+		}
+		err := sessionContext.StartTransaction(&transactionOpts)
 		if err != nil {
 			return err
 		}
@@ -56,7 +61,7 @@ func genRunningSequenceAndUpdate(db *mongo.Database, sequenceName string, purcha
 		}
 
 		fmt.Println(newRunning)
-		//time.Sleep(1 * time.Minute)
+		time.Sleep(1 * time.Minute)
 
 		updated, err := purchase.UpdateOne(sessionContext,
 			bson.M{"purchase_id": purchaseId},
