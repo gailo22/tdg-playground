@@ -1,0 +1,26 @@
+spring:
+  port: 9966
+  application:
+    name: consul-service
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""
+    data: "classpath*:data.sql"
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2.console.enabled: true
+
+
+demo.security.jwt:
+  tokenExpirationTime: 15 # Number of minutes
+  refreshTokenExpTime: 60 # Minutes
+  tokenIssuer: http://gailo22.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+
