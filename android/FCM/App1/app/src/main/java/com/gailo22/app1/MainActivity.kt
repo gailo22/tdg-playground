@@ -15,9 +15,6 @@ class MainActivity : AppCompatActivity() {
     val ACTION_HELLO = "com.gailo22.app1.HELLO"
     // firebase FCM
     val remoteConfig = FirebaseRemoteConfig.getInstance()
-    val configSettings = FirebaseRemoteConfigSettings.Builder()
-        .setMinimumFetchIntervalInSeconds(3600)
-        .build()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +26,10 @@ class MainActivity : AppCompatActivity() {
             sendIntent()
         }
 
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setDeveloperModeEnabled(true)
+            .setMinimumFetchIntervalInSeconds(1)
+            .build()
         remoteConfig.setConfigSettingsAsync(configSettings)
 
         val helloRemoteConfig = findViewById<TextView>(R.id.hello_config)
