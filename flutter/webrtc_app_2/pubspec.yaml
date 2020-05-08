@@ -21,7 +21,7 @@ dependencies:
   google_sign_in: ^4.1.1
   cloud_firestore: ^0.13.3
   injectable: ^0.3.0
-  flushbar: ^1.9.1
+  flushbar: 1.9.1
   json_annotation: ^3.0.1
   styled_widget: ^0.1.1
   flutter_hooks: ^0.8.0
