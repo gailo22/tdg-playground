@@ -53,7 +53,7 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 
-	books := append(books, Book{ID: "1", Isbn: "233324", Title: "Book One", Author: &Author{Firstname: "John", Lastname: "Doe"}})
+	books = append(books, Book{ID: "1", Isbn: "233324", Title: "Book One", Author: &Author{Firstname: "John", Lastname: "Doe"}})
 
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
 	r.HandleFunc("/api/books/{id}", getBook).Methods("GET")
