@@ -1,9 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:webrtcapp/resources/firebase_repository.dart';
+import 'package:provider/provider.dart';
+import 'package:webrtcapp/provider/image_upload_provider.dart';
+import 'package:webrtcapp/provider/user_provider.dart';
+import 'package:webrtcapp/resources/auth_methods.dart';
 import 'package:webrtcapp/screens/home_screen.dart';
 import 'package:webrtcapp/screens/login_screen.dart';
+import 'package:webrtcapp/screens/search_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,23 +16,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final AuthMethods _authMethods = AuthMethods();
 
-  FirebaseRepository _repository = FirebaseRepository();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "My WebRTC App",
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-        future: _repository.getCurrentUser(),
-        builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-          if (snapshot.hasData) {
-            return HomeScreen();
-          } else {
-            return LoginScreen();
-          }
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ImageUploadProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MaterialApp(
+        title: "Skype Clone",
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/search_screen': (context) => SearchScreen(),
         },
-      )
+        theme: ThemeData(brightness: Brightness.dark),
+        home: FutureBuilder(
+          future: _authMethods.getCurrentUser(),
+          builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+            if (snapshot.hasData) {
+              return HomeScreen();
+            } else {
+              return LoginScreen();
+            }
+          },
+        ),
+      ),
     );
   }
 }
