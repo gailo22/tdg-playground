@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        <div class="container">
+            <form id="message-form">
+                <h1>Chat</h1>
+                <p>
+                    <label>Username</label>
+                    <input class="form-control" id="username" />
+                </p>
+                <p>
+                    <label>Message</label>
+                    <textarea class="form-control" placeholder="Type message.." id="message" required></textarea>
+                </p>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+            <div id="messages"></div>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io('http://localhost:5000');
+            socket.on('message.sent', function (data) {
+                $('#messages').prepend(`
+                    <div>
+                        <hr />
+                        <div><strong>${data.username}</strong></div>
+                        <p>${data.message}</p>
+                    </div>
+                `);
+            });
+
+            $(function() {
+                $('#message-form').on('submit', function (e) {
+                    e.preventDefault();
+                    socket.emit('message.send', {
+                        message: $('#message').val(),
+                        username: $('#username').val()
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>
