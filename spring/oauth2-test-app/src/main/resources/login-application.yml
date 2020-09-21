@@ -1,0 +1,32 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: << client id >>
+            client-secret: << client secret >>
+
+          facebook:
+            client-id: << client id >>
+            client-secret: << client secret >>
+
+          okta:
+            client-id: << client id >>
+            client-secret: << client secret >>
+            client-name: Okta
+
+          auth0:
+            client-id: << client id >>
+            client-secret: << client secret >>
+            client-name: Auth0
+
+          github:
+            client-id: << client id >>
+            client-secret: << client secret >>
+
+        provider:
+          okta:
+            issuer-uri: https://dev-456882.okta.com/oauth2/default
+          auth0:
+            issuer-uri: https://gailo22.auth0.com/
