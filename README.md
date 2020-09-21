@@ -1,2 +1,3 @@
 # tdg-playground
-All the things I learn
+
+This playground is for me to keep things I find interesting in day-to-day basis.
