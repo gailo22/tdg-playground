@@ -1,0 +1,17 @@
+<resources>
+    <string name="intro_title"><b>Welcome to your wellbeing assistant</b></string>
+    <string name="intro_button">Get started</string>
+
+    <string name="intro_journal_title">Daily reflections</string>
+    <string name="intro_journal_subtitle">Recap &amp; express your feelings</string>
+    <string name="intro_habits_title">Healthy habits</string>
+    <string name="intro_habits_subtitle">Improve &amp; own your lifestyle</string>
+    <string name="intro_zoneout_title">Quality time</string>
+    <string name="intro_zoneout_subtitle">Balance your life with those you care</string>
+
+    <string name="privacy_terms">By continuing, you agree to Amiga\'s Terms of Service.\nAmiga\'s Privacy policy describes how your data is handled.</string>
+    <string name="terms">Terms of Service</string>
+    <string name="privacy">Privacy policy</string>
+    <string name="terms_url" translatable="false">https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/legal/Terms%20and%20Conditions.md</string>
+    <string name="privacy_url" translatable="false">https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/legal/Privacy%20Policy.md</string>
+</resources>

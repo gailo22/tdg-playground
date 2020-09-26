@@ -1,0 +1,12 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+dependencies {
+    implementation project(Modules.usermanager)
+    implementation project(Modules.navigation)
+    implementation project(Modules.resources)
+    implementation project(Modules.views)
+
+    testImplementation Libs.mockk
+    testImplementation Libs.junit
+    testImplementation "com.airbnb.android:mvrx-testing:2.0.0-alpha2"
+}

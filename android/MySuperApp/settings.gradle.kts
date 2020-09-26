@@ -13,5 +13,14 @@ gradleEnterprise {
 }
 
 include(
-    ":app"
+    ":app",
+    ":common:resources",
+    ":common:cache",
+    ":common:network",
+    ":common:views",
+    ":navigation",
+    ":libs:usermanager",
+    ":features:home",
+    ":features:onboarding",
+    ":features:profile"
 )
