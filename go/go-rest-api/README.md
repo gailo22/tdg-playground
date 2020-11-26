@@ -7,6 +7,12 @@ $ go mod init github.com/gailo22/tdg-playground/go/go-rest-api
 ```
 
 
+Dependency
+---
+```
+$ go get cloud.google.com/go/firestore
+```
+
 Run
 ---
 ```
