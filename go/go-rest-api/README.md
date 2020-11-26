@@ -17,7 +17,7 @@ Run
 ---
 ```
 $ go build
-$ ./go-rest-api
+$ go run *.go
 2020/11/25 18:24:24 Server listening on port  :8000
 
 ```
