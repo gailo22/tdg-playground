@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const concurrentRoutes = require('./routes/concurrent')
+const pubsubRoutes = require('./routes/pubsub')
 
 const errorHandler = require('./middlewares/errorHandler');
 
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/api/concurrent', concurrentRoutes);
+app.use('/api/pubsub', pubsubRoutes);
 
 app.use(errorHandler);
 
