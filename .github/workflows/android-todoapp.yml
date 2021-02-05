@@ -29,4 +29,4 @@ jobs:
         appId: ${{secrets.FIREBASE_APP_ID}}
         token: ${{secrets.FIREBASE_TOKEN}}
         groups: developers
-        file: app/build/outputs/apk/release/app-release-unsigned.apk
+        file: android/TodoApp/app/build/outputs/apk/release/app-release-unsigned.apk
