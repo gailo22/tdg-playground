@@ -20,6 +20,13 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       working-directory: android/TodoApp
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: build release 
+      run: ./gradlew assembleRelease
       working-directory: android/TodoApp
+    - name: upload artifact to Firebase App Distribution
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: ${{secrets.FIREBASE_APP_ID}}
+        token: ${{secrets.FIREBASE_TOKEN}}
+        groups: developers
+        file: app/build/outputs/apk/release/app-release-unsigned.apk
