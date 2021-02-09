@@ -1,0 +1,18 @@
+server:
+  port: 2222
+
+spring:
+  application:
+    name: resource-server
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          jwk-set-uri: ${mockwebserver.url}/.well-known/jwks.json
+          jwk-set-uri: https://dev-456882.okta.com/oauth2/default/v1/keys
+
+
+logging:
+  level:
+    org.springframework.security: TRACE
