@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "namespace": "com.gailo22.kafka.kafkaproducerconsumer.model",
+  "name": "User",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "avro.java.string": "String"
+    },
+    {
+      "name": "age",
+      "type": "int"
+    }
+  ]
+}
