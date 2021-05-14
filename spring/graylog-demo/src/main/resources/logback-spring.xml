@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration>
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} [%X{svc_usr}]%clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <contextName>test</contextName>
+    <jmxConfigurator/>
+
+    <springProperty scope="context" name="APP_ORG" source="APP_ORG" defaultValue="tdlabs"/>
+    <!-- tdlabs, internal, customer-42, tenant-42 -->
+
+    <springProperty scope="context" name="APP_CTX" source="APP_CTX" defaultValue="demo"/>
+    <!-- core, infra, idm, sec, domain1, domain2, domain3-->
+
+    <springProperty scope="context" name="APP_ENV" source="APP_ENV" defaultValue="dev"/>
+    <!-- dev, qa, prod -->
+
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <!-- greeting-service -->
+
+    <appender name="GELF-1" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        <host>${LOG_PROTO:-tcp}:${LOG_HOSTNAME:-localhost}</host>
+        <port>${LOG_PORT:-12201}</port>
+
+        <version>1.0</version>
+        <timestampPattern>yyyy-MM-dd HH:mm:ss,SSSS</timestampPattern>
+        <maximumMessageSize>8192</maximumMessageSize>
+
+        <facility>-</facility> <!--disable facility -->
+
+        <extractStackTrace>true</extractStackTrace> <!-- we want stack-traces-->
+        <filterStackTrace>true</filterStackTrace> <!-- trim stack-traces, see: http://logging.paluch.biz/stack-trace-filter.html -->
+
+        <mdcProfiling>false</mdcProfiling>
+
+        <additionalFields>org=${APP_ORG},ctx=${APP_CTX},svc=${APP_NAME},env=${APP_ENV}</additionalFields>
+        <additionalFieldTypes>org=String,ctx=String,svc=String,env=String</additionalFieldTypes>
+
+        <mdcFields>APP_STAGE</mdcFields>
+        <dynamicMdcFields>svc_.*</dynamicMdcFields>
+        <!--<includeFullMdc>true</includeFullMdc>-->
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${LOG_LEVEL_GELF:-INFO}</level>
+        </filter>
+    </appender>
+
+    <appender name="GELF-2" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        <host>tcp:localhost</host>
+        <port>12201</port>
+        <version>1.0</version>
+        <facility>logstash-gelf</facility>
+        <extractStackTrace>true</extractStackTrace>
+        <filterStackTrace>true</filterStackTrace>
+        <includeLocation>true</includeLocation>
+        <mdcProfiling>true</mdcProfiling>
+        <timestampPattern>yyyy-MM-dd HH:mm:ss,SSS</timestampPattern>
+        <maximumMessageSize>8192</maximumMessageSize>
+        <additionalFields>fieldName1=fieldValue1,fieldName2=fieldValue2</additionalFields>
+        <additionalFieldTypes>fieldName1=String,fieldName2=Double,fieldName3=Long</additionalFieldTypes>
+        <mdcFields>mdcField1,mdcField2</mdcFields>
+        <dynamicMdcFields>myMdc.*,[a-z]+Field</dynamicMdcFields>
+        <dynamicMdcFieldTypes>my_field.*=String,business\..*\.field=double</dynamicMdcFieldTypes>
+        <includeFullMdc>true</includeFullMdc>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="GELF-1"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+<!--    <logger name="demo" level="DEBUG"/>-->
+
+</configuration>
