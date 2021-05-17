@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: RabbitMQ-App
+
+  rabbitmq:
+    host: localhost
+    port: 5000
+
