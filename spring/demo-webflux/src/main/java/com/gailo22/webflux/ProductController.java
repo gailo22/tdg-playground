@@ -35,7 +35,7 @@ public class ProductController {
         return repository.save(product);
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public Mono<ResponseEntity<Product>> updateProduct(@PathVariable String id,
                                                        @RequestBody Product product) {
         return repository.findById(id)
