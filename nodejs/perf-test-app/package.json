@@ -1,0 +1,19 @@
+{
+  "name": "perf-test-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --recursive"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "should": "^9.0.2",
+    "loadtest": "^1.4.3",
+    "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
