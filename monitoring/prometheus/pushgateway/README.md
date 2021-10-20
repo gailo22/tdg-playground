@@ -49,4 +49,8 @@ done
 
 Explore -> Prometheus -> metrics browser> some_metric{job="some_job"}
 
+5. create a new dashboard
+
+![image dashboard](./create_dashboard.png)
+
 
