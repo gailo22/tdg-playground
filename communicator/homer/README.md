@@ -1,0 +1,11 @@
+# Homer SipCapture
+
+### install hom7-docker
+
+```
+$ git checkout https://github.com/sipcapture/homer7-docker
+$ cd homer7-docker/heplify-server/hom7-prom-all
+
+$ docker-compose up -d
+
+```
