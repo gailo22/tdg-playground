@@ -17,3 +17,12 @@ $ npm install -g hepgen.js
 $ hepgen.js -s 127.0.0.1 -p 9060 -c "./config/b2bcall_rtcp.js"
 
 ```
+
+### check homer
+
+![homer screen](./homer_screen.png)
+
+
+### check grafana
+
+![grafana dashboard](./grafana_dashboard.png)
