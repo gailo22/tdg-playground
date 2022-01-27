@@ -25,4 +25,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "coturn-vm"
     end
   end
+  
+  # box 3 - homer
+  config.vm.define "homer-vm" do |instance|
+    instance.vm.box = "bento/centos-8"
+    instance.vm.hostname = "homer"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.23", netmask:"255.255.0.0"
+
+    instance.vm.provider "virtualbox" do |v|
+      v.name = "homer-vm"
+    end
+  end
 end

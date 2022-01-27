@@ -3,6 +3,7 @@ VoIP install and cofiguration
 * Kamailio ip: 192.168.1.20 -> centos7
 * RTPEngine ip: 192.168.1.21 -> centos8
 * CoTurn ip: 192.168.1.22 -> centos8
+* Homer ip: 192.168.1.23 -> centos8
 
 
 ## freeswitch
