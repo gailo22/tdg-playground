@@ -5,17 +5,20 @@ VoIP install and cofiguration
 * CoTurn ip: 192.168.1.22 -> centos8
 * Homer ip: 192.168.1.23 -> centos8
 
+### vagrant
+- centos7
+  - freeswitch-vm
+  - rtpengine-vm
+- centos8
+  - kamailio-vm
+  - coturn-vm
+  - homer-vm
 
 ## freeswitch
 
 ```
 $ fs_cli
 $ tail -f /var/log/freeswitch/freeswitch.log
-```
-
-```
-vagrant init bento/ubuntu-20.04
-vagrant up
 ```
 
 
@@ -29,7 +32,6 @@ $ echo "OPTIONS=\"-i 192.168.1.21 -n 192.168.1.21:5050 -m 10000 -M 60000 -L 4 --
 $ dnf install epel-release epel-next-release
 $ dnf --enablerepo="epel" install coturn
 ```
-
 
 ### command line
 ```

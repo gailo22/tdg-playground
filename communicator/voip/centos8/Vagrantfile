@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "kamailio-vm" do |instance|
     instance.vm.box = "bento/centos-8"
     instance.vm.hostname = "kamailio"
-    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.20", netmask:"255.255.0.0"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.20", netmask:"255.255.255.0"
 
     instance.vm.provider "virtualbox" do |v|
       v.name = "kamailio-vm"
@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "coturn-vm" do |instance|
     instance.vm.box = "bento/centos-8"
     instance.vm.hostname = "coturn"
-    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.22", netmask:"255.255.0.0"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.22", netmask:"255.255.255.0"
 
     instance.vm.provider "virtualbox" do |v|
       v.name = "coturn-vm"
@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "homer-vm" do |instance|
     instance.vm.box = "bento/centos-8"
     instance.vm.hostname = "homer"
-    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.23", netmask:"255.255.0.0"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.23", netmask:"255.255.255.0"
 
     instance.vm.provider "virtualbox" do |v|
       v.name = "homer-vm"

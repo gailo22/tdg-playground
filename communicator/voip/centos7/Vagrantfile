@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "freeswitch-vm" do |instance|
     instance.vm.box = "bento/centos-7"
     instance.vm.hostname = "freeswitch"
-    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.19", netmask:"255.255.0.0"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.19", netmask:"255.255.255.0"
     
     instance.vm.provider "virtualbox" do |v|
       v.name = "freeswitch-vm"
@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "rtpengine-vm" do |instance|
     instance.vm.box = "bento/centos-7"
     instance.vm.hostname = "rtpengine"
-    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.21", netmask:"255.255.0.0"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.21", netmask:"255.255.255.0"
 
     instance.vm.provider "virtualbox" do |v|
       v.name = "rtpengine-vm"
