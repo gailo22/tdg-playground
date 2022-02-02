@@ -17,7 +17,10 @@ VoIP install and cofiguration
 ## freeswitch
 
 ```
-$ fs_cli
+$ yum install -y https://files.freeswitch.org/repo/yum/centos-release/freeswitch-release-repo-0-1.noarch.rpm epel-release
+$ yum install -y freeswitch-config-vanilla freeswitch-lang-* freeswitch-sounds-*
+$ systemctl enable freeswitch
+$ fs_cli -rRS
 $ tail -f /var/log/freeswitch/freeswitch.log
 ```
 
@@ -32,6 +35,28 @@ $ echo "OPTIONS=\"-i 192.168.1.21 -n 192.168.1.21:5050 -m 10000 -M 60000 -L 4 --
 $ dnf install epel-release epel-next-release
 $ dnf --enablerepo="epel" install coturn
 ```
+### sngrep
+
+#### centos 7
+```
+$ vim /etc/yum.repos.d/sngrep.repo
+
+[irontec]
+name=Irontec RPMs repository
+baseurl=http://packages.irontec.com/centos/$releasever/$basearch/
+
+$ rpm --import http://packages.irontec.com/public.key
+$ yum update
+$ yum install sngrep
+```
+
+#### centos 8
+```
+$ dnf install epel-release epel-next-release
+$ rpm -ivh http://repo.okay.com.mx/centos/8/x86_64/release/okay-release-1-5.el8.noarch.rpm
+$ dnf install sngrep
+```
+
 
 ### command line
 ```
