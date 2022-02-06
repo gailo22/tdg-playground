@@ -65,6 +65,13 @@ $ journalctl -exlf -u kamailio
 
 ```
 
+### vagrant command
+```
+$ vagrant up
+$ vagrant ssh freeswitch-vm
+$ vagrant destroy freeswitch vm & vagrant up
+$ vagrant vbguest --status
+
 ### reference
 * https://blog.kolmisoft.com/rtpengine-install-on-centos-7/
 * https://github.com/sipwise/rtpengine/wiki/Install-RTPEngine-on-Centos-7 
@@ -72,3 +79,4 @@ $ journalctl -exlf -u kamailio
 * https://thesumof.it/blog/2019-01-14-vagrant-instance-names 
 * https://blog.kolmisoft.com/homer-install-on-centos-8/
 * https://www.informaticar.net/install-turn-server-for-synapse-matrix-on-centos-rhel/
+* https://freeswitch.org/confluence/display/FREESWITCH/CentOS+7+and+RHEL+7#CentOS7andRHEL7-CentOS7andRHEL7-Stable
