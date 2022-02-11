@@ -97,11 +97,39 @@ AlegIDs = ["X-CID","P-Charging-Vector,icid-value=\"?(.*?)(?:\"|;|$)","X-BroadWor
 ```
 
 
+### SIPp
+```
+$ cd /usr/src/
+$ wget https://github.com/SIPp/sipp/releases/download/v3.6.1/sipp-3.6.1.tar.gz
+$ tar -xvzf sipp-3.6.1.tar.gz
+$ cd sipp-3.6.1
+$ cmake .
+$ make
+
+# 1 call every 5 seconds
+$ ./sipp -sn uac -r 1 -rp 5s 192.168.1.20
+
+```
+
 ### command line
 ```
 $ journalctl -exlf -u rtpengine
 $ journalctl -exlf -u kamailio
 
+$ timedatectl set-timezone Asia/Bangkok
+
+```
+
+### nc and netcat
+```
+nc:
+--
+nc -luk 192.168.1.20 5066
+nc -uv 192.168.1.20 5066
+
+or
+ncat -lup 192.168.1.20 5066
+ncat -uv 192.168.1.20 5066
 ```
 
 ### vagrant command
@@ -119,3 +147,5 @@ $ vagrant vbguest --status
 * https://blog.kolmisoft.com/homer-install-on-centos-8/
 * https://www.informaticar.net/install-turn-server-for-synapse-matrix-on-centos-rhel/
 * https://freeswitch.org/confluence/display/FREESWITCH/CentOS+7+and+RHEL+7#CentOS7andRHEL7-CentOS7andRHEL7-Stable
+* https://sipp.readthedocs.io/en/latest/
+* https://www.osradar.com/how-to-install-cmake-on-centos-8/
