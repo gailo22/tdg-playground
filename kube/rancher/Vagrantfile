@@ -5,6 +5,10 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 Vagrant.configure(2) do |config|
 
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false  
+  end
+  
   config.vm.provision "shell", path: "bootstrap.sh"
 
   # Kubernetes Master Server
