@@ -4,6 +4,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
   # box 1 - freeswitch
   config.vm.define "freeswitch-vm" do |instance|
     instance.vm.box = "bento/centos-7"

@@ -4,6 +4,11 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
   # box 1 - kamailio
   config.vm.define "kamailio-vm" do |instance|
     instance.vm.box = "bento/centos-8"
