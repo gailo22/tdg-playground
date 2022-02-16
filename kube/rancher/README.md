@@ -50,3 +50,7 @@ After it started successfully you will see this screen:
 ![](./rancher-startup-page.png)
 
 follow the step to login.
+
+Then import my existing kubernetes cluster in to Rancher as below:
+
+![](./my-local-k8s-in-rancher.png)
