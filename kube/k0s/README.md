@@ -1,11 +1,11 @@
 # K0S
 
-### start vagrant with virtualbox provider
+### start vagrant with libvirt provider
 ```
 $ vagrant up --provider libvirt
 ```
 
-## installation
+## installation - setup kubernetes using k0s
 ```
 $ curl -sSLf https://get.k0s.sh | sudo sh 
 $ sudo systemctl list-unit-files | grep k0s
@@ -19,7 +19,7 @@ $ sudo k0s kubectl get pods -n kube-system -o wide
 
 ```
 
-## deploy sample nginx
+## deploy a sample nginx
 ```
 $ sudo k0s kubectl create deploy nginx --image nginx
 $ sudo k0s kubectl get pods
@@ -36,7 +36,7 @@ $ k0s kubectl get all -n metallb-system
 
 ```
 
-## expose deployment as load balancer 
+## expose the nginx deployment as load balancer 
 ```
 $ ip a s eth0
 eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
@@ -47,6 +47,22 @@ eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group d
        valid_lft forever preferred_lft forever
 
 $ sipcalc 192.168.121.180/24
+-[ipv4 : 192.168.121.180/24] - 0
+
+[CIDR]
+Host address		- 192.168.121.180
+Host address (decimal)	- 3232266676
+Host address (hex)	- C0A879B4
+Network address		- 192.168.121.0
+Network mask		- 255.255.255.0
+Network mask (bits)	- 24
+Network mask (hex)	- FFFFFF00
+Broadcast address	- 192.168.121.255
+Cisco wildcard		- 0.0.0.255
+Addresses in network	- 256
+Network range		- 192.168.121.0 - 192.168.121.255
+Usable range		- 192.168.121.1 - 192.168.121.254
+
 
 $ vim metallb.yaml
 
