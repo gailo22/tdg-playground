@@ -200,7 +200,19 @@ traefik 	https://helm.traefik.io/traefik
 longhorn	https://charts.longhorn.io
 $ helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
 $ kubectl -n longhorn-system get all
+$ kubectl get sc
+NAME                 PROVISIONER                                   RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+longhorn (default)   driver.longhorn.io                            Delete          Immediate           true                   15m
+nfs-client           k8s-sigs.io/nfs-subdir-external-provisioner   Delete          Immediate           false                  23h
 
+$ kubectl apply -f my-pvc.yaml
+$ kubectl get pv,pvc
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   REASON   AGE
+persistentvolume/pvc-194e7d84-a1d8-494a-9066-55133ac2a93e   1Gi        RWO            Delete           Bound    default/longhorn-volv-pvc   longhorn                5s
+persistentvolume/pvc-cc305d43-f3fd-4b48-9f0b-4f53a0191f66   128Mi      RWO            Delete           Bound    traefik/traefik             nfs-client              22h
+
+NAME                                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+persistentvolumeclaim/longhorn-volv-pvc   Bound    pvc-194e7d84-a1d8-494a-9066-55133ac2a93e   1Gi        RWO            longhorn       12s
 ```
 
 ## references
