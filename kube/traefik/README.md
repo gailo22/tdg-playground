@@ -160,6 +160,37 @@ open browser at http://localhost:9000/dashboard/#/ you will see the below screen
 
 ![](./traefix-dashboard-1.png)
 
+## deploy ingress routes
+```
+$ cd ingress
+$ kubectl create -f nginx-deploy-main.yaml -f nginx-deploy-blue.yaml -f nginx-deploy-green.yaml
+$ kubectl expose deploy nginx-deploy-main --port 80
+$ kubectl expose deploy nginx-deploy-blue --port 80
+$ kubectl expose deploy nginx-deploy-green --port 80
+
+$ kubectl create -f 1-ingressroutes.yaml
+$ kubectl -n traefik get svc
+NAME      TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
+traefik   LoadBalancer   10.105.194.226   172.16.16.240   80:30321/TCP,443:31689/TCP   12h
+
+$ vim /etc/hosts
+
+172.16.16.240   nginx.example.com
+
+$ kubectl get ingressroutes             
+NAME    AGE
+nginx   10s
+
+$ kubectl delete ingressroutes nginx
+$ kubectl create -f 3-ingressroutes.yaml
+
+$ vim /etc/hosts
+
+172.16.16.240   nginx.example.com blue.nginx.example.com green.nginx.example.com
+
+
+```
+
 ## references
 * https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
 * https://doc.traefik.io/traefik/
