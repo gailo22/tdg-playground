@@ -213,9 +213,18 @@ persistentvolume/pvc-cc305d43-f3fd-4b48-9f0b-4f53a0191f66   128Mi      RWO      
 
 NAME                                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 persistentvolumeclaim/longhorn-volv-pvc   Bound    pvc-194e7d84-a1d8-494a-9066-55133ac2a93e   1Gi        RWO            longhorn       12s
+
+$ kubectl -n longhorn-system edit svc longhorn-frontend
+change sevice type to LoadBalancer
+$ kubectl get svc -n longhorn-system
+NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+longhorn-frontend          LoadBalancer   10.105.127.132   172.16.16.241   80:31535/TCP   40m
 ```
+open browser at http://172.16.16.241/ you will see the below screen:
+
+![](./longhorn-dashboard.png)
 
 ## references
 * https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
 * https://doc.traefik.io/traefik/
-* 
+* https://longhorn.io/docs/1.2.3/deploy/install/install-with-helm/
