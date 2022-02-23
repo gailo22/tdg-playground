@@ -188,6 +188,18 @@ $ vim /etc/hosts
 
 172.16.16.240   nginx.example.com blue.nginx.example.com green.nginx.example.com
 
+```
+
+## longhorn setup
+```
+$ helm repo add longhorn https://charts.longhorn.io
+$ helm repo update
+$ helm repo list
+NAME    	URL
+traefik 	https://helm.traefik.io/traefik
+longhorn	https://charts.longhorn.io
+$ helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
+$ kubectl -n longhorn-system get all
 
 ```
 
