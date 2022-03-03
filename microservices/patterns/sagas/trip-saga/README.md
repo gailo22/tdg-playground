@@ -2,4 +2,6 @@
 
 ### diagram
 
-![Diagram](trip-saga-diagram.drawio.png)
+![](trip-saga-diagram-1.drawio.png)
+
+![](trip-saga-diagram-2.drawio.png)
