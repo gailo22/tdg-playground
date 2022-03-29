@@ -1,0 +1,10 @@
+app:
+  port: 3000
+
+db:
+  driver: "mysql"
+  host: "db"
+  port: 3306
+  username: root
+  password: password
+  database: hex_test
