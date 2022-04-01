@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.gailo22.saga'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://jcenter.bintray.com/' }
+}
+
+dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'io.eventuate.tram.core:eventuate-tram-spring-optimistic-locking:0.29.0.RELEASE'
+	implementation 'io.eventuate.tram.core:eventuate-tram-spring-jdbc-kafka:0.29.0.RELEASE'
+	implementation 'io.eventuate.local.java:eventuate-local-java-spring-jdbc:0.32.0.RELEASE'
+	implementation 'io.eventuate.tram.core:eventuate-tram-spring-consumer-kafka:0.29.0.RELEASE'
+	implementation 'io.eventuate.tram.sagas:eventuate-tram-sagas-spring-orchestration-simple-dsl:0.18.0.RELEASE'
+	implementation 'io.eventuate.tram.sagas:eventuate-tram-sagas-spring-participant:0.18.0.RELEASE'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'mysql:mysql-connector-java:5.1.36'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
