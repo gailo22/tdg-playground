@@ -1,0 +1,23 @@
+server.port: 8082
+
+spring:
+  application.name: todo-service
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/todo_db
+    username: root
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+elasticsearch:
+  host: localhost
+  port: 9200
+  clustername: my-es-cluster
+
+kafka:
+  bootstrapAddress: localhost:9092
+  groupId: todo
