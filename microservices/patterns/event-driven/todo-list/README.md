@@ -13,11 +13,13 @@ The Todo List application is built using
 
 ![](./todo_list_architecture.png)
 
-## docker
+## docker for axonserver, elasticsearch and kibana
 ```
 $ docker run -d --name axonserver -p 8024:8024 -p 8124:8124 axoniq/axonserver
 
 $ docker run -d --name my-es --net es-network -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.17.1
+
+$ docker run -d --name my-kib01 --net es-network -p 127.0.0.1:5601:5601 -e "ELASTICSEARCH_HOSTS=http://my-es:9200" docker.elastic.co/kibana/kibana:7.17.1
 ```
 
 ## testing command
