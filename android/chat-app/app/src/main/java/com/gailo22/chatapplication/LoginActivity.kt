@@ -9,8 +9,13 @@ import org.jivesoftware.smack.chat2.ChatManager
 import org.jivesoftware.smack.chat2.IncomingChatMessageListener
 import org.jivesoftware.smack.tcp.XMPPTCPConnection
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration
+import org.jxmpp.jid.DomainBareJid
+import org.jxmpp.jid.EntityBareJid
+import org.jxmpp.jid.Jid
+import org.jxmpp.jid.impl.JidCreate
 import org.jxmpp.stringprep.XmppStringprepException
 import java.io.IOException
+import java.net.InetAddress
 
 
 class LoginActivity : AppCompatActivity() {
@@ -29,11 +34,23 @@ class LoginActivity : AppCompatActivity() {
                 var connectionConfiguration: XMPPTCPConnectionConfiguration? = null
 
                 try {
+//                    Jid jid = JidCreatefrom("gailo22@chinwag.im/balcony")
+//                    val domainBareFrom = JidCreate.domainBareFrom("xmpp.chinwag.im")
+
+//                    connectionConfiguration = XMPPTCPConnectionConfiguration.builder()
+//                        .setHost("chat.chinwag.im")
+//                        .setUsernameAndPassword("gailo22", "password")
+//                        .setXmppDomain("chinwag.im")
+//                        .setKeystoreType(null)
+//                        .build()
+
                     connectionConfiguration = XMPPTCPConnectionConfiguration.builder()
-                        .setUsernameAndPassword("gailo22", "password")
-                        .setXmppDomain("chinwag.im")
-                        .setKeystoreType(null)
-                        .build()
+                        .setHost("mylocal.im")
+                        .setXmppDomain(JidCreate.domainBareFrom("localhost"))
+                        .setUsernameAndPassword("john", "password")
+                        .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+//                        .setDebuggerEnabled(true)
+                        .build();
 
                 } catch (e: XmppStringprepException) {
                     e.printStackTrace()
@@ -58,17 +75,17 @@ class LoginActivity : AppCompatActivity() {
                         Log.d(LOGTAG, "CHAT - connectionClosedOnError")
                     }
 
-                    override fun reconnectionSuccessful() {
-                        Log.d(LOGTAG, "CHAT - ReconnectionSuccessful")
-                    }
-
-                    override fun reconnectingIn(seconds: Int) {
-                        Log.d(LOGTAG, "CHAT - ReconnectingIn")
-                    }
-
-                    override fun reconnectionFailed(e: Exception) {
-                        Log.d(LOGTAG, "CHAT - ReconnectionFailed")
-                    }
+//                    override fun reconnectionSuccessful() {
+//                        Log.d(LOGTAG, "CHAT - ReconnectionSuccessful")
+//                    }
+//
+//                    override fun reconnectingIn(seconds: Int) {
+//                        Log.d(LOGTAG, "CHAT - ReconnectingIn")
+//                    }
+//
+//                    override fun reconnectionFailed(e: Exception) {
+//                        Log.d(LOGTAG, "CHAT - ReconnectionFailed")
+//                    }
                 })
 
                 val chatManager: ChatManager = ChatManager.getInstanceFor(connection)
