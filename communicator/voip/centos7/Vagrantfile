@@ -30,5 +30,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "rtpengine-vm"
     end
   end
+
+  # box 3 - ss7
+  config.vm.define "ss7-vm" do |instance|
+    instance.vm.box = "bento/centos-7"
+    instance.vm.hostname = "ss7"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.22", netmask:"255.255.255.0"
+
+    instance.vm.provider "virtualbox" do |v|
+      v.name = "ss7-vm"
+    end
+  end
   
 end
