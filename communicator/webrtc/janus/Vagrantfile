@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  config.vm.define "janus1-vm" do |instance|
+    instance.vm.box = "generic/ubuntu2004"
+    instance.vm.hostname="janus1"
+    instance.vm.network "public_network", bridge: "wlo1", ip:"192.168.1.20", netmask:"255.255.255.0"
+
+    instance.vm.provider "virtualbox" do |v|
+      v.name = "janus1-vm"
+    end
+  end
+
+end

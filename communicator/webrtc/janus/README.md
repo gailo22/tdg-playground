@@ -1,6 +1,12 @@
 # janus-gateway intallation on ubuntu 20.04 LTS
 
-$ root@janus-ubuntu-2004:~/usrsctp# cat /etc/os-release
+### start vm using vagrant
+```
+$ vagrant up --provider virtualbox
+```
+
+```
+root@janus-ubuntu-2004:~/usrsctp# cat /etc/os-release
 NAME="Ubuntu"
 VERSION="20.04.5 LTS (Focal Fossa)"
 ID=ubuntu
@@ -13,11 +19,12 @@ BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 VERSION_CODENAME=focal
 UBUNTU_CODENAME=focal
+```
 
 ### update dependencies
 
 ```
-$ apt update
+$ sudo apt update
 $ bash install_dependencies.sh
 ```
 
@@ -29,7 +36,7 @@ $ bash install_libsrtp.sh
 
 ### install libnice
 ```
-$ apt install meson
+$ sudo apt install meson
 $ bash install_libnice.sh
 ```
 
@@ -84,8 +91,8 @@ OR
 # $ ./configure --prefix=/opt/janus --disable-data-channels --disable-rabbitmq --disable-mqtt
 
 $ make
-$ make install
-$ make configs
+$ sudo make install
+$ sudo make configs
 
 ```
 
@@ -99,7 +106,7 @@ $ make configs
 sudo vi /opt/janus/etc/janus/janus.jcfg
 
 add:
-log_to_file = "/var/log/janus/janus.log
+log_to_file = "/var/log/janus/janus.log"
 
 
 ### testing janus
@@ -110,7 +117,7 @@ $ /opt/janus/bin/janus --help
 
 ### create as a service
 ```
-$ vi /etc/systemd/system/webrtcserver.service
+$ sudo vi /etc/systemd/system/webrtcserver.service
 
 [Unit]
 Description=My Janus WebRTC Server
@@ -132,11 +139,11 @@ WantedBy=multi-user.target
 
 ### add libs
 ```
-$ vi /etc/ld.so.conf.d/libc.conf
+$ sudo vi /etc/ld.so.conf.d/libc.conf
 
 add /usr/lib64 to the list
 
-$ ldconfig
+$ sudo ldconfig
 ```
 
 ```
@@ -176,10 +183,25 @@ $ python3 -m http.server 8000
 
 ```
 
+### how to access
+open urls:
+* https://192.168.1.20/janus/info
+* https://192.168.1.20:8443/
+
+
+### test websocket
+
+```
+$ npm install -g wscat
+$ wscat -c https://192.168.1.20
+
+```
+
 ### references
  - https://ourcodeworld.com/articles/read/1197/how-to-install-janus-gateway-in-ubuntu-server-18-04
  - https://github.com/meetecho/janus-gateway
  - https://gitlab.freedesktop.org/libnice/libnice
  - https://github.com/sctplab/usrsctp/blob/master/Manual.md
  - https://ourcodeworld.com/articles/read/1263/how-to-configure-the-janus-webrtc-server-as-a-service-with-systemd-in-ubuntu-18-04
+ - https://facsiaginsa.com/janus/basic-janus-configuration-with-ssl
 
