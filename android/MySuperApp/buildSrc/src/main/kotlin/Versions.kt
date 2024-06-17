@@ -16,7 +16,7 @@ object Versions {
 
     const val com_squareup_retrofit2: String = "2.9.0"
 
-    const val org_jetbrains_kotlin: String = "1.3.72" // available: "1.4.10"
+    const val org_jetbrains_kotlin: String = "1.5.30" // available: "1.4.10"
 
     const val com_android_tools_build_gradle: String = "4.0.1"
 

@@ -1,0 +1,17 @@
+{
+  "customId": "T1686623056CUACAD",
+  "productId": "6213",
+  "packageName": "com.example.jetpack.keycloakloginapp",
+  "bundleId": "",
+  "material": "01EvAnsyXYvrGsOhS7R/u/xweECczmZT9i2nH5i3E7YY0N0gdcgBMEY3WwhH6Z6+m52UZIOnWVLxt9thl+rXMVH6N7kcn3E61C2JDbBNctjQ7xrminog0euaQkJqvbcxTfTYOWi2zDuQAhesevhMwRSssNJq6qFgdOBwFty9dRaPt/Q60dqA4TNPm99iuWK3SFOT7I5xn2Ck8puXj8Zi+Yn/7LkmuktZ4dsbvo8mN2A9+MvGa7qOsDa9nJxulkOVhfEjATozoZtQhprg2YJ7nnypLhH4q5lnQGUkXT3WCJfPCmLWhbQgLs2pmHJeNOhahCSf8g3EYigvZsOZAZoIvejDOnYg2J8/KRpYGlFSDJWhWJfbvzTFUb0r/kYKYYz4uoUh4wvTiwho9WwJQU0pegHMdE2R47JCdC3hnzxZQTBt4E1tPmD1P+sOJ8XdUlYn09XQZ9yoSJ+7XNXDx9SH7QkogtQwWtnkY+qZ9zruJdu8RmvEBqfspPI/t/a3/3rxwq9ohqK2JxE6iq264Gi0kaTcS+hWFoLZzwRmeozeukkKg=ca1aeef3c44be496",
+  "shark": {
+    "httpUrl": "https://tcmppapi.qq.com:30013",
+    "tcpHost": "MAZUTCPDOMAN",
+    "tcpPort": 0,
+    "appKey": "app-y8qp9jlxb6",
+    "symEnc": 2,
+    "asymEnc": 1
+  },
+  "feedback": "https://tcmppopen.qq.com/feedbackui/",
+  "qapmUrl": "http://ww.com"
+}
